@@ -1,6 +1,6 @@
 # Zimdalo
 
-Prototype interactif de **Zimdalo**, une plateforme guidée pour :
+Plateforme guidée pour :
 
 - lancer un nouveau SaaS à partir d'une idée,
 - digitaliser une entreprise déjà existante,
@@ -8,26 +8,65 @@ Prototype interactif de **Zimdalo**, une plateforme guidée pour :
 
 Pensée pour les entrepreneurs francophones d'Afrique et de la diaspora.
 
-## Contenu du prototype
-
-- **Landing page** : hero, sections "Pour qui", animation 3D des prestations, parcours en 6 étapes, boîte à outils, fonctionnalités, marketplace, tarifs.
-- **Démo interactive** : parcours de 4 questions générant un résultat personnalisé (idées, pistes de digitalisation, pistes d'extension).
-- **Blog** : 6 articles sur la validation d'idée, la digitalisation, l'extension internationale, le pricing par pays, la conformité OHADA et la revente de SaaS.
-- **Formations**, **Success stories** (exemples illustratifs), **Communauté**.
-- Pages **Mentions légales**, **Confidentialité**, **Contact** (modèles à personnaliser).
-
 ## Stack
 
-Fichier unique auto-porté : HTML / CSS / JavaScript vanilla, [Three.js](https://threejs.org/) (CDN) pour l'animation 3D, polices Google Fonts (Space Grotesk, Inter, IBM Plex Mono). Aucune dépendance à installer.
+- **React 18** + **Vite 5** — build rapide, HMR en développement.
+- **Three.js** (chargé en lazy-import) pour l'animation 3D des prestations.
+- CSS classique avec tokens (`:root` custom properties) — pas de Tailwind, pas de framework CSS.
+- Routage interne léger basé sur `window.location.hash` (`src/useHashRoute.js`), sans dépendance à `react-router`.
+- Contenu centralisé dans `src/data/content.js` — facile à faire évoluer ou à connecter à un backend (Supabase) plus tard.
 
-## Lancer le projet en local
+## Structure
 
-Ouvrir simplement `index.html` dans un navigateur, ou servir le dossier :
+```
+src/
+  main.jsx              point d'entrée React
+  App.jsx                routeur principal (hash-based)
+  useHashRoute.js         hook de routage
+  styles.css              styles globaux (tokens, sections, composants)
+  data/content.js          contenu : outils, fonctionnalités, marketplace, tarifs, blog, formations, success stories, communauté
+  components/
+    Header.jsx
+    Footer.jsx
+    CardGrid.jsx           grille de cartes générique (outils, fonctionnalités)
+    Demo.jsx                parcours interactif en 4 questions
+    Prestations3D.jsx       scène Three.js (import dynamique, cleanup complet)
+  pages/
+    Home.jsx                landing complète (hero, pour qui, 3D, démo, parcours, outils, marketplace, tarifs)
+    Blog.jsx / Article.jsx
+    Formations.jsx
+    Succes.jsx
+    Communaute.jsx
+    Mentions.jsx
+    Confidentialite.jsx
+    Contact.jsx
+```
+
+## Développement local
 
 ```bash
-npx serve .
+npm install
+npm run dev
 ```
+
+## Build de production
+
+```bash
+npm run build
+npm run preview   # pour tester le build localement
+```
+
+Le build génère `dist/`. Le chunk Three.js est séparé du bundle principal (chargé uniquement quand la section 3D est affichée).
+
+## Déploiement (Vercel)
+
+Le fichier `vercel.json` configure :
+- `buildCommand`: `npm run build`
+- `outputDirectory`: `dist`
+- un rewrite SPA (`/(.*) → /index.html`) pour que le routage par hash fonctionne correctement après un rechargement de page.
+
+Il suffit de connecter le dépôt GitHub à un projet Vercel — aucune variable d'environnement n'est requise pour l'instant (le projet ne consomme pas encore de backend).
 
 ## Statut
 
-Prototype / démonstration — les formulaires (contact, inscription au challenge) ne sont pas connectés à un backend. Le contenu marketplace, blog et success stories est illustratif.
+Prototype avancé — les formulaires (contact, inscription au challenge) ne sont pas connectés à un backend. Le contenu marketplace, blog et success stories est illustratif. Une intégration Supabase (auth, données réelles) pourra être ajoutée dans une prochaine itération, en suivant le même pattern que KONZIMA et ArcaTek (client fetch custom, sans `supabase-js`).
