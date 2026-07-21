@@ -12,8 +12,9 @@ export default function Header({ navigate }) {
           <a onClick={() => navigate("#marketplace")}>Marketplace</a>
           <a onClick={() => navigate("#/blog")}>Blog</a>
           <a onClick={() => navigate("#tarifs")}>Tarifs</a>
+          <a onClick={() => navigate("#/connexion")}>Connexion</a>
         </nav>
-        <button className="nav-cta" onClick={() => navigate("#demo")}>
+        <button className="nav-cta" onClick={() => navigate("#/inscription")}>
           Commencer
         </button>
       </div>

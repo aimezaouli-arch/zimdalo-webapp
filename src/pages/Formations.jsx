@@ -1,6 +1,6 @@
 import { formations } from "../data/content.js";
 
-export default function Formations() {
+export default function Formations({ navigate }) {
   return (
     <>
       <section className="subpage-hero">
@@ -18,7 +18,23 @@ export default function Formations() {
                 <span className="level">{f[0]}</span>
                 <h4>{f[1]}</h4>
                 <p>{f[2]}</p>
-                <span className="duration">{f[3]}</span>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 10 }}>
+                  <span className="duration">{f[3]}</span>
+                  <button
+                    onClick={() => navigate("#/inscription")}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: "var(--ink)",
+                      fontSize: 12.5,
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    Commencer →
+                  </button>
+                </div>
               </div>
             ))}
           </div>

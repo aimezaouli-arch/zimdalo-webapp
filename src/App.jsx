@@ -10,9 +10,13 @@ import Communaute from "./pages/Communaute.jsx";
 import Mentions from "./pages/Mentions.jsx";
 import Confidentialite from "./pages/Confidentialite.jsx";
 import Contact from "./pages/Contact.jsx";
+import Inscription from "./pages/Inscription.jsx";
+import Connexion from "./pages/Connexion.jsx";
+import ListingDetail from "./pages/ListingDetail.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import { useHashRoute } from "./useHashRoute.js";
 
-const PAGES = {
+const SIMPLE_PAGES = {
   home: Home,
   blog: Blog,
   formations: Formations,
@@ -20,13 +24,13 @@ const PAGES = {
   communaute: Communaute,
   mentions: Mentions,
   confidentialite: Confidentialite,
-  contact: Contact,
+  connexion: Connexion,
+  notfound: NotFound,
 };
 
 export default function App() {
   const { route, navigate } = useHashRoute();
 
-  // Scroll en haut de page (nouvelle route) ou vers l'ancre demandée (page d'accueil).
   useEffect(() => {
     if (route.page === "home" && route.anchor) {
       const id = requestAnimationFrame(() => {
@@ -36,20 +40,26 @@ export default function App() {
       return () => cancelAnimationFrame(id);
     }
     window.scrollTo(0, 0);
-  }, [route.page, route.id, route.anchor]);
+  }, [route.page, route.id, route.plan, route.anchor]);
 
-  let PageContent;
+  let content;
   if (route.page === "article") {
-    PageContent = <Article id={route.id} navigate={navigate} />;
+    content = <Article id={route.id} navigate={navigate} />;
+  } else if (route.page === "listing") {
+    content = <ListingDetail id={route.id} navigate={navigate} />;
+  } else if (route.page === "inscription") {
+    content = <Inscription plan={route.plan} navigate={navigate} />;
+  } else if (route.page === "contact") {
+    content = <Contact listingId={route.id} navigate={navigate} />;
   } else {
-    const Page = PAGES[route.page] || Home;
-    PageContent = <Page navigate={navigate} />;
+    const Page = SIMPLE_PAGES[route.page] || Home;
+    content = <Page navigate={navigate} />;
   }
 
   return (
     <>
       <Header navigate={navigate} />
-      <main>{PageContent}</main>
+      <main>{content}</main>
       <Footer navigate={navigate} />
     </>
   );

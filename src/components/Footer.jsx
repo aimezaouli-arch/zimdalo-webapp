@@ -26,16 +26,21 @@ export default function Footer({ navigate }) {
               <a onClick={() => navigate("#/communaute")}>Communauté</a>
             </div>
             <div className="footer-col">
+              <h5>Compte</h5>
+              <a onClick={() => navigate("#/connexion")}>Connexion</a>
+              <a onClick={() => navigate("#/inscription")}>Créer un compte</a>
+              <a onClick={() => navigate("#/contact")}>Contact</a>
+            </div>
+            <div className="footer-col">
               <h5>Légal</h5>
               <a onClick={() => navigate("#/mentions")}>Mentions légales</a>
               <a onClick={() => navigate("#/confidentialite")}>Confidentialité</a>
-              <a onClick={() => navigate("#/contact")}>Contact</a>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
           <span>© 2026 Zimdalo. Tous droits réservés.</span>
-          <span className="mono">v0.3 — React/Vite</span>
+          <span className="mono">v0.4 — React/Vite</span>
         </div>
       </div>
     </footer>

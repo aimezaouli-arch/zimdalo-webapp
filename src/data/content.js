@@ -23,11 +23,67 @@ export const features = [
 ];
 
 export const listings = [
-  ["FactureCI", "Facturation OHADA pour PME", "Abidjan, CI", "420 $ MRR", "4 200 $"],
-  ["StockAgile", "Gestion de stock multi-boutiques", "Dakar, SN", "310 $ MRR", "3 100 $"],
-  ["RendezVous+", "Prise de RDV pour cliniques", "Abidjan, CI", "680 $ MRR", "7 500 $"],
-  ["PayeFacile", "Paie et déclarations sociales", "Cotonou, BJ", "250 $ MRR", "2 600 $"],
+  {
+    id: "facture-ci",
+    name: "FactureCI",
+    tagline: "Facturation OHADA pour PME",
+    zone: "Abidjan, Côte d'Ivoire",
+    mrr: "420 $ MRR",
+    price: "4 200 $",
+    founded: "2024",
+    stack: ["React", "Node.js", "PostgreSQL"],
+    description:
+      "FactureCI automatise la facturation conforme OHADA pour les PME ivoiriennes : génération de factures, relances automatiques, export comptable. Utilisé par plus de 60 entreprises actives.",
+    included: ["Code source complet", "Documentation technique", "Historique de revenus 12 mois", "Base de 60+ clients actifs"],
+  },
+  {
+    id: "stock-agile",
+    name: "StockAgile",
+    tagline: "Gestion de stock multi-boutiques",
+    zone: "Dakar, Sénégal",
+    mrr: "310 $ MRR",
+    price: "3 100 $",
+    founded: "2023",
+    stack: ["Vue.js", "Express", "MySQL"],
+    description:
+      "StockAgile centralise la gestion de stock pour des commerces multi-points de vente : suivi en temps réel, alertes de rupture, rapports par boutique.",
+    included: ["Code source complet", "Documentation technique", "Historique de revenus 8 mois", "Intégrations Mobile Money"],
+  },
+  {
+    id: "rendezvous-plus",
+    name: "RendezVous+",
+    tagline: "Prise de RDV pour cliniques",
+    zone: "Abidjan, Côte d'Ivoire",
+    mrr: "680 $ MRR",
+    price: "7 500 $",
+    founded: "2023",
+    stack: ["React", "Supabase", "Tailwind"],
+    description:
+      "RendezVous+ permet aux cliniques et salons de gérer leurs rendez-vous en ligne avec rappels automatiques par SMS. Croissance stable depuis 14 mois.",
+    included: ["Code source complet", "Documentation technique", "Historique de revenus 14 mois", "Base de 20 cliniques partenaires"],
+  },
+  {
+    id: "paye-facile",
+    name: "PayeFacile",
+    tagline: "Paie et déclarations sociales",
+    zone: "Cotonou, Bénin",
+    mrr: "250 $ MRR",
+    price: "2 600 $",
+    founded: "2024",
+    stack: ["Next.js", "Node.js", "PostgreSQL"],
+    description:
+      "PayeFacile simplifie le calcul de la paie et les déclarations sociales pour les PME béninoises, avec mise à jour automatique des barèmes.",
+    included: ["Code source complet", "Documentation technique", "Historique de revenus 6 mois", "Barèmes sociaux à jour"],
+  },
 ];
+
+export const planSlugs = {
+  Free: "explorer",
+  Basic: "builder",
+  Pro: "pro-saas",
+  Premium: "enterprise",
+};
+
 
 export const plans = {
   afrique: [

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Prestations3D from "../components/Prestations3D.jsx";
 import Demo from "../components/Demo.jsx";
 import CardGrid from "../components/CardGrid.jsx";
-import { tools, features, listings, plans, steps } from "../data/content.js";
+import { tools, features, listings, plans, planSlugs, steps } from "../data/content.js";
 
 export default function Home({ navigate }) {
   const [region, setRegion] = useState("afrique");
@@ -163,27 +163,29 @@ export default function Home({ navigate }) {
             <p>Listings vérifiés, prix estimé par pays, transaction sécurisée par séquestre.</p>
           </div>
           <div className="market-grid">
-            {listings.map((l, i) => (
-              <div className="listing" key={i}>
+            {listings.map((l) => (
+              <div className="listing" key={l.id}>
                 <div className="listing-top">
                   <span className="listing-tag">Vérifié</span>
-                  <h4>{l[0]}</h4>
-                  <span>{l[1]}</span>
+                  <h4>{l.name}</h4>
+                  <span>{l.tagline}</span>
                 </div>
                 <div className="listing-body">
                   <div className="listing-row">
                     <span>Zone</span>
-                    <b>{l[2]}</b>
+                    <b>{l.zone}</b>
                   </div>
                   <div className="listing-row">
                     <span>Revenu récurrent</span>
-                    <b>{l[3]}</b>
+                    <b>{l.mrr}</b>
                   </div>
                   <div className="listing-row">
                     <span>Prix estimé</span>
-                    <b>{l[4]}</b>
+                    <b>{l.price}</b>
                   </div>
-                  <button className="listing-cta">Voir le listing</button>
+                  <button className="listing-cta" onClick={() => navigate(`#/marketplace/${l.id}`)}>
+                    Voir le listing
+                  </button>
                 </div>
               </div>
             ))}
@@ -225,7 +227,9 @@ export default function Home({ navigate }) {
                     <li key={f}>{f}</li>
                   ))}
                 </ul>
-                <button>{p[1] === "Free" ? "Commencer" : `Choisir ${p[1]}`}</button>
+                <button onClick={() => navigate(`#/inscription/${planSlugs[p[1]]}`)}>
+                  {p[1] === "Free" ? "Commencer" : `Choisir ${p[1]}`}
+                </button>
               </div>
             ))}
           </div>
