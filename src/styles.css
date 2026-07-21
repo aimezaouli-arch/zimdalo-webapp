@@ -44,7 +44,8 @@ header{
 }
 .logo .dot{width:7px;height:7px;background:var(--amber);border-radius:1px;transform:rotate(45deg);}
 .nav-links{display:flex; gap:24px; font-size:14px; color:var(--slate);}
-.nav-links a:hover{color:var(--paper); cursor:pointer;}
+.nav-links a{cursor:pointer;}
+.nav-links a:hover{color:var(--paper);}
 .nav-cta{
   background:var(--amber); color:var(--ink); font-weight:600; font-size:13px;
   padding:9px 18px; border-radius:var(--radius); border:none; cursor:pointer;
