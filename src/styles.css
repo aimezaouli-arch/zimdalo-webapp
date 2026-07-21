@@ -113,6 +113,23 @@ section{padding:76px 0;}
 }
 .pill:hover{border-color:var(--cyan); color:var(--cyan);}
 .pill.selected{background:var(--cyan); border-color:var(--cyan); color:var(--ink); font-weight:600;}
+
+.pill-light{
+  background:#fff; border:1px solid #DDE3EC; color:var(--ink);
+  padding:11px 18px; border-radius:20px; font-size:13.5px; cursor:pointer; font-family:'Inter',sans-serif;
+}
+.pill-light:hover{border-color:var(--cyan); color:var(--ink);}
+.pill-light.selected{background:var(--ink); border-color:var(--ink); color:var(--paper); font-weight:600;}
+
+.tool-result{
+  margin-top:24px; padding:20px 22px; background:#FBFCFD; border:1px solid #E3E7EE; border-radius:6px;
+}
+.tool-result h4{font-size:14.5px; margin-bottom:10px; color:var(--ink);}
+.tool-result .metric-row{display:flex; justify-content:space-between; font-size:13.5px; padding:7px 0; border-top:1px solid #EEF1F5;}
+.tool-result .metric-row:first-of-type{border-top:none;}
+.tool-result .metric-row b{font-family:'IBM Plex Mono',monospace; color:var(--ink);}
+.tool-result ul{padding-left:20px; font-size:13.5px; color:#5A6472; margin-top:8px;}
+.tool-result li{margin-bottom:6px;}
 .demo-nav{display:flex; justify-content:space-between; margin-top:28px;}
 .link-btn{background:none; border:none; color:var(--slate); font-size:13px; cursor:pointer;}
 .link-btn:hover{color:var(--paper);}
@@ -155,6 +172,16 @@ section{padding:76px 0;}
 }
 .tool-card h4{font-size:14.5px; margin-bottom:6px;}
 .tool-card p{font-size:12.5px; color:#6B7686;}
+
+.tool-card--clickable{cursor:pointer; display:flex; flex-direction:column;}
+.tool-card-actions{display:flex; align-items:center; gap:14px; margin-top:14px; padding-top:14px; border-top:1px solid #EEF1F5;}
+.tool-cta-primary{
+  background:var(--ink); color:var(--paper); border:none; font-weight:600; font-size:12.5px;
+  padding:8px 14px; border-radius:var(--radius); cursor:pointer;
+}
+.tool-cta-primary:hover{background:var(--ink-2);}
+.tool-cta-secondary{font-size:12px; color:#6B7686; cursor:pointer; text-decoration:underline; text-underline-offset:2px;}
+.tool-cta-secondary:hover{color:var(--ink);}
 
 .prestations3d{background:var(--ink); color:var(--paper);}
 .prestations3d .section-head p{color:var(--slate);}

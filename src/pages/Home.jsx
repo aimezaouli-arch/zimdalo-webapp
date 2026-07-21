@@ -2,7 +2,9 @@ import { useState } from "react";
 import Prestations3D from "../components/Prestations3D.jsx";
 import Demo from "../components/Demo.jsx";
 import CardGrid from "../components/CardGrid.jsx";
-import { tools, features, listings, plans, planSlugs, steps } from "../data/content.js";
+import ToolCard from "../components/ToolCard.jsx";
+import { toolsConfig } from "../data/tools.js";
+import { features, listings, plans, planSlugs, steps } from "../data/content.js";
 
 export default function Home({ navigate }) {
   const [region, setRegion] = useState("afrique");
@@ -131,10 +133,17 @@ export default function Home({ navigate }) {
             <span className="eyebrow" style={{ color: "var(--ink)" }}>
               Boîte à outils
             </span>
-            <h2>Dix outils automatisés, intégrés au parcours</h2>
-            <p>Chaque outil peut aussi être utilisé seul, en dehors du parcours guidé.</p>
+            <h2>Dix outils autonomes, utilisables un par un</h2>
+            <p>
+              Chaque outil s'ouvre directement, sans passer par le parcours guidé. Tu peux aussi les
+              enchaîner via le parcours si tu préfères tout faire d'un coup.
+            </p>
           </div>
-          <CardGrid items={tools} />
+          <div className="tools-grid">
+            {toolsConfig.map((tool) => (
+              <ToolCard key={tool.slug} tool={tool} navigate={navigate} />
+            ))}
+          </div>
         </div>
       </section>
 

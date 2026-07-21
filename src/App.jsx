@@ -13,6 +13,7 @@ import Contact from "./pages/Contact.jsx";
 import Inscription from "./pages/Inscription.jsx";
 import Connexion from "./pages/Connexion.jsx";
 import ListingDetail from "./pages/ListingDetail.jsx";
+import ToolPage from "./pages/ToolPage.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import { useHashRoute } from "./useHashRoute.js";
 
@@ -47,6 +48,8 @@ export default function App() {
     content = <Article id={route.id} navigate={navigate} />;
   } else if (route.page === "listing") {
     content = <ListingDetail id={route.id} navigate={navigate} />;
+  } else if (route.page === "tool") {
+    content = <ToolPage slug={route.id} navigate={navigate} />;
   } else if (route.page === "inscription") {
     content = <Inscription plan={route.plan} navigate={navigate} />;
   } else if (route.page === "contact") {

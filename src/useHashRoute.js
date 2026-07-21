@@ -47,6 +47,9 @@ function parseHash(hash) {
   if (hash.indexOf("#/marketplace/") === 0) {
     return { page: "listing", id: hash.replace("#/marketplace/", ""), plan: null, anchor: null };
   }
+  if (hash.indexOf("#/outils/") === 0) {
+    return { page: "tool", id: hash.replace("#/outils/", ""), plan: null, anchor: null };
+  }
   if (hash.indexOf("#/inscription/") === 0) {
     return { page: "inscription", id: null, plan: hash.replace("#/inscription/", ""), anchor: null };
   }

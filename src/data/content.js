@@ -1,16 +1,3 @@
-export const tools = [
-  ["01", "SaaS Idea Finder", "Idées par pays et secteur, avec score de viabilité."],
-  ["02", "Market Fit Analyzer", "Type de marché, capacité à payer, taille du marché (TAM/SAM/SOM)."],
-  ["03", "Pricing Calculator", "Prix recommandé et revenus potentiels par pays."],
-  ["04", "Revenue Simulator", "MRR, ARPU, LTV et temps pour atteindre un objectif."],
-  ["05", "Roadmap Builder", "Planning personnalisé : tâches, budget, délais."],
-  ["06", "Cahier de Charge", "Génération automatique d'un cahier de charge PDF."],
-  ["07", "Business Model", "Modèle de prix, segmentation, canaux."],
-  ["08", "Marketing Plan", "Plan 30/60/90 jours, templates prêts à l'emploi."],
-  ["09", "SaaS Health Checker", "Score de santé du SaaS et recommandations."],
-  ["10", "Hosting Advisor", "Recommandation d'hébergeur et coût estimé."],
-];
-
 export const features = [
   ["◆", "Tableau de bord unifié", "Suis ton parcours, tes outils et ta marketplace depuis un seul écran."],
   ["◆", "Rôles multi-utilisateurs", "Invite associés, agents ou employés avec des accès adaptés."],
