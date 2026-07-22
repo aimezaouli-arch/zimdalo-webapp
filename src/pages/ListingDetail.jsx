@@ -32,7 +32,17 @@ export default function ListingDetail({ id, navigate }) {
             </span>
           </div>
           <h1>{listing.name}</h1>
-          <p style={{ color: "#5A6472", fontSize: 15, marginTop: -8, marginBottom: 20 }}>{listing.tagline}</p>
+          <p style={{ color: "#5A6472", fontSize: 15, marginTop: -8, marginBottom: 10 }}>{listing.tagline}</p>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
+            <span style={{ color: "#F2A73B", fontSize: 14, letterSpacing: 1 }}>
+              {"★".repeat(Math.round(listing.rating))}
+              {"☆".repeat(5 - Math.round(listing.rating))}
+            </span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)" }}>{listing.rating.toFixed(1)}</span>
+            <span style={{ fontSize: 12.5, color: "#8A93A3" }}>
+              ({listing.reviews} avis · {listing.sales} ventes)
+            </span>
+          </div>
 
           <div
             style={{

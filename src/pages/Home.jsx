@@ -3,8 +3,9 @@ import Prestations3D from "../components/Prestations3D.jsx";
 import Demo from "../components/Demo.jsx";
 import CardGrid from "../components/CardGrid.jsx";
 import ToolCard from "../components/ToolCard.jsx";
+import MarketplaceGrid from "../components/MarketplaceGrid.jsx";
 import { toolsConfig } from "../data/tools.js";
-import { features, listings, plans, planSlugs, steps } from "../data/content.js";
+import { features, plans, planSlugs, steps } from "../data/content.js";
 
 export default function Home({ navigate }) {
   const [region, setRegion] = useState("afrique");
@@ -171,34 +172,7 @@ export default function Home({ navigate }) {
             <h2>Achète ou revends un SaaS ou une activité digitale</h2>
             <p>Listings vérifiés, prix estimé par pays, transaction sécurisée par séquestre.</p>
           </div>
-          <div className="market-grid">
-            {listings.map((l) => (
-              <div className="listing" key={l.id}>
-                <div className="listing-top">
-                  <span className="listing-tag">Vérifié</span>
-                  <h4>{l.name}</h4>
-                  <span>{l.tagline}</span>
-                </div>
-                <div className="listing-body">
-                  <div className="listing-row">
-                    <span>Zone</span>
-                    <b>{l.zone}</b>
-                  </div>
-                  <div className="listing-row">
-                    <span>Revenu récurrent</span>
-                    <b>{l.mrr}</b>
-                  </div>
-                  <div className="listing-row">
-                    <span>Prix estimé</span>
-                    <b>{l.price}</b>
-                  </div>
-                  <button className="listing-cta" onClick={() => navigate(`#/marketplace/${l.id}`)}>
-                    Voir le listing
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+          <MarketplaceGrid navigate={navigate} />
         </div>
       </section>
 

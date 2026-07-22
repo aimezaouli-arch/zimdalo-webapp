@@ -129,28 +129,32 @@ export default function Demo() {
               </div>
               <p style={{ fontSize: 13, color: "var(--slate)", marginBottom: 4 }}>{copy.lead}</p>
               <div className="idea-cards">
-                {ideas.map((idea, i) => (
-                  <div key={i} className={`idea-card${chosenIdx === i ? " chosen" : ""}`}>
-                    <h4>{idea[0]}</h4>
-                    <p className="desc">{idea[1]}</p>
-                    <div className="idea-meta">
-                      <span>Score de viabilité</span>
-                      <b>{idea[2]}/100</b>
+                {ideas.map((idea, i) => {
+                  const isBest = idea[2] === Math.max(...ideas.map((x) => x[2]));
+                  return (
+                    <div key={i} className={`idea-card${chosenIdx === i ? " chosen" : ""}${isBest ? " idea-card--best" : ""}`}>
+                      {isBest && <span className="idea-best-badge">Meilleur score</span>}
+                      <h4>{idea[0]}</h4>
+                      <p className="desc">{idea[1]}</p>
+                      <div className="idea-meta">
+                        <span>Score de viabilité</span>
+                        <b>{idea[2]}/100</b>
+                      </div>
+                      <div className="score-bar">
+                        <i style={{ width: `${idea[2]}%` }}></i>
+                      </div>
+                      <div className="idea-meta">
+                        <span>Prix suggéré</span>
+                        <b>{price}/mois</b>
+                      </div>
+                      <div className="idea-meta">
+                        <span>MRR potentiel</span>
+                        <b>{mrr}</b>
+                      </div>
+                      <button onClick={() => setChosenIdx(i)}>{copy.cta}</button>
                     </div>
-                    <div className="score-bar">
-                      <i style={{ width: `${idea[2]}%` }}></i>
-                    </div>
-                    <div className="idea-meta">
-                      <span>Prix suggéré</span>
-                      <b>{price}/mois</b>
-                    </div>
-                    <div className="idea-meta">
-                      <span>MRR potentiel</span>
-                      <b>{mrr}</b>
-                    </div>
-                    <button onClick={() => setChosenIdx(i)}>{copy.cta}</button>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
               {chosenIdx !== null && (
                 <div className="followup show">
