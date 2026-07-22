@@ -12,6 +12,7 @@ import Confidentialite from "./pages/Confidentialite.jsx";
 import Contact from "./pages/Contact.jsx";
 import Inscription from "./pages/Inscription.jsx";
 import Connexion from "./pages/Connexion.jsx";
+import Vendre from "./pages/Vendre.jsx";
 import ListingDetail from "./pages/ListingDetail.jsx";
 import ToolPage from "./pages/ToolPage.jsx";
 import NotFound from "./pages/NotFound.jsx";
@@ -26,6 +27,7 @@ const SIMPLE_PAGES = {
   mentions: Mentions,
   confidentialite: Confidentialite,
   connexion: Connexion,
+  vendre: Vendre,
   notfound: NotFound,
 };
 

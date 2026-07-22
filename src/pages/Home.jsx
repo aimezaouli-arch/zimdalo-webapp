@@ -1,15 +1,13 @@
-import { useState } from "react";
 import PrestationsCarousel from "../components/PrestationsCarousel.jsx";
 import Demo from "../components/Demo.jsx";
 import CardGrid from "../components/CardGrid.jsx";
 import ToolCard from "../components/ToolCard.jsx";
 import MarketplaceGrid from "../components/MarketplaceGrid.jsx";
+import PricingSection from "../components/PricingSection.jsx";
 import { toolsConfig } from "../data/tools.js";
-import { features, plans, planSlugs, steps } from "../data/content.js";
+import { features, steps } from "../data/content.js";
 
 export default function Home({ navigate }) {
-  const [region, setRegion] = useState("afrique");
-
   return (
     <>
       {/* HERO */}
@@ -173,51 +171,24 @@ export default function Home({ navigate }) {
             <p>Listings vérifiés, prix estimé par pays, transaction sécurisée par séquestre.</p>
           </div>
           <MarketplaceGrid navigate={navigate} />
+
+          <div className="sell-banner">
+            <div>
+              <span className="eyebrow" style={{ marginBottom: 8 }}>
+                Tu es de l'autre côté ?
+              </span>
+              <h3>Vends ton SaaS à des acheteurs qualifiés</h3>
+              <p>Vérification sous 48h, visibilité dans 25 pays, transaction sécurisée par séquestre.</p>
+            </div>
+            <button className="btn-primary" style={{ background: "var(--amber)" }} onClick={() => navigate("#/vendre")}>
+              Vendre mon SaaS
+            </button>
+          </div>
         </div>
       </section>
 
       {/* TARIFS */}
-      <section className="pricing" id="tarifs">
-        <div className="container">
-          <div className="section-head">
-            <span className="eyebrow" style={{ color: "var(--ink)" }}>
-              Tarifs
-            </span>
-            <h2>Un plan pour chaque étape de ton parcours</h2>
-          </div>
-          <div className="toggle-wrap">
-            <div className="toggle">
-              <button className={region === "afrique" ? "active" : ""} onClick={() => setRegion("afrique")}>
-                Afrique
-              </button>
-              <button className={region === "intl" ? "active" : ""} onClick={() => setRegion("intl")}>
-                International
-              </button>
-            </div>
-          </div>
-          <div className="plans">
-            {plans[region].map((p, i) => (
-              <div className={`plan${i === 2 ? " featured" : ""}`} key={p[0]}>
-                {i === 2 && <div className="plan-badge">Le plus choisi</div>}
-                <h4>{p[0]}</h4>
-                <div className="tag">{p[1]}</div>
-                <div className="price">
-                  {p[2]}
-                  <span>{p[3]}</span>
-                </div>
-                <ul>
-                  {p[4].map((f) => (
-                    <li key={f}>{f}</li>
-                  ))}
-                </ul>
-                <button onClick={() => navigate(`#/inscription/${planSlugs[p[1]]}`)}>
-                  {p[1] === "Free" ? "Commencer" : `Choisir ${p[1]}`}
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PricingSection navigate={navigate} />
     </>
   );
 }

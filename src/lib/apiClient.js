@@ -19,6 +19,7 @@
  *   POST /api/challenge-signup  { email }
  *   POST /api/auth/signup       { fullName, email, password, plan? }
  *   POST /api/auth/login        { email, password }
+ *   POST /api/sell-submission   { name, tagline, category, mrr, askingPrice, description, email }
  */
 
 const API_URL = (import.meta.env.VITE_API_URL || "").replace(/\/+$/, "");
@@ -72,6 +73,7 @@ export const api = {
   joinChallenge: (payload) => post("/api/challenge-signup", payload),
   signUp: (payload) => post("/api/auth/signup", payload),
   signIn: (payload) => post("/api/auth/login", payload),
+  submitListing: (payload) => post("/api/sell-submission", payload),
 };
 
 export const isApiConfigured = IS_CONFIGURED;

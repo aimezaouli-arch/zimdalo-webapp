@@ -335,14 +335,54 @@ section{padding:76px 0;}
 .plan.featured{border-color:var(--amber); box-shadow:0 10px 24px rgba(242,167,59,0.15);}
 .plan-badge{position:absolute; top:-11px; left:22px; background:var(--amber); color:var(--ink); font-family:'IBM Plex Mono',monospace; font-size:10px; padding:3px 9px; border-radius:3px; font-weight:600;}
 .plan h4{font-size:15px; margin-bottom:4px;}
+.plan-icon{
+  width:36px; height:36px; border-radius:8px; background:#F4F6F9; color:var(--ink);
+  display:flex; align-items:center; justify-content:center; font-size:16px; margin-bottom:14px;
+}
+.plan.featured .plan-icon{background:rgba(242,167,59,0.14); color:var(--amber);}
 .plan .tag{font-size:12px; color:#8A93A3; margin-bottom:18px;}
 .plan .price{font-family:'IBM Plex Mono',monospace; font-size:28px; font-weight:500; margin-bottom:2px;}
 .plan .price span{font-size:13px; color:#8A93A3; font-family:'Inter',sans-serif;}
 .plan ul{list-style:none; margin:20px 0; font-size:13px; color:#5A6472;}
-.plan li{padding:6px 0; border-top:1px solid #EEF1F5;}
+.plan li{padding:7px 0; border-top:1px solid #EEF1F5; display:flex; align-items:center; gap:9px;}
+.plan li svg{flex-shrink:0; color:var(--green);}
 .plan li:first-child{border-top:none;}
 .plan button{width:100%; padding:11px; border-radius:var(--radius); border:1px solid var(--ink); background:none; font-weight:600; font-size:13.5px; cursor:pointer; color:var(--ink);}
 .plan.featured button{background:var(--ink); color:var(--paper);}
+
+.pricing-trust{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:22px; margin-top:36px; padding-top:28px;
+  border-top:1px solid #EEF1F5;
+}
+.pricing-trust-item{
+  display:flex; align-items:center; gap:7px; font-size:12.5px; color:#6B7686;
+}
+.pricing-trust-item svg{color:var(--green); flex-shrink:0;}
+
+.sell-steps{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px;}
+.sell-step{position:relative; padding-top:6px;}
+.sell-step-num{
+  display:block; font-size:26px; color:rgba(15,27,61,0.12); font-weight:700; margin-bottom:8px;
+}
+.sell-step h4{font-size:14.5px; margin-bottom:6px; color:var(--ink);}
+.sell-step p{font-size:13px; color:#6B7686; line-height:1.5;}
+
+.sell-stats{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px;
+  background:var(--ink); border-radius:8px; padding:32px;
+}
+.sell-stat{text-align:center;}
+.sell-stat-num{font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:700; color:var(--cyan); margin-bottom:6px;}
+.sell-stat-label{font-size:12px; color:var(--slate); line-height:1.4;}
+
+.sell-form-card{background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:28px;}
+
+.sell-banner{
+  margin-top:32px; background:var(--ink); border-radius:10px; padding:32px 36px;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+}
+.sell-banner h3{color:var(--paper); font-size:19px; margin-bottom:6px;}
+.sell-banner p{color:var(--slate); font-size:13.5px;}
 
 .subpage-hero{background:var(--ink); color:var(--paper); padding:56px 0 44px;}
 .subpage-hero h1{font-size:clamp(26px,4.5vw,38px); font-weight:700; margin:10px 0 8px;}

@@ -194,6 +194,26 @@ export function priceFor(budget) {
   return ["39 $", "1 200 $ MRR"];
 }
 
+const BUDGET_BASE = {
+  petit: { price: 9, customers: 20 },
+  moyen: { price: 19, customers: 28 },
+  grand: { price: 39, customers: 31 },
+};
+
+/**
+ * Calcule un prix suggéré et un MRR potentiel propres à chaque idée,
+ * pondérés par son score de viabilité (au lieu d'un montant identique
+ * pour les 3 idées d'un même profil).
+ */
+export function computeIdeaPricing(budget, score) {
+  const base = BUDGET_BASE[budget] || BUDGET_BASE.moyen;
+  const scoreFactor = 0.7 + (score / 100) * 0.6;
+  const price = Math.round(base.price * scoreFactor * 10) / 10;
+  const customers = Math.round(base.customers * scoreFactor);
+  const mrr = Math.round(price * customers);
+  return [`${price} $`, `${mrr.toLocaleString("fr-FR")} $ MRR`];
+}
+
 export const steps = [
   ["1", "Onboarding", "Quatre questions : situation de départ (nouveau projet, entreprise existante, extension), type de client visé, budget disponible, pays ou zone."],
   ["2", "Génération d'idées", "Trois idées ou pistes adaptées, avec marché, prix, MRR estimé et score de viabilité."],

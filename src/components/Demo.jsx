@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ideaBank, profilCopy, priceFor } from "../data/content.js";
+import { ideaBank, profilCopy, computeIdeaPricing } from "../data/content.js";
 
 const TOTAL_STEPS = 4;
 
@@ -33,7 +33,6 @@ export default function Demo() {
 
   const zoneKey = answers.pays === "ci" ? "ci" : answers.pays === "afrique" ? "afrique" : "intl";
   const ideas = answers.client ? ideaBank[answers.client][zoneKey] : [];
-  const [price, mrr] = priceFor(answers.budget);
   const copy = profilCopy[answers.profil] || profilCopy.novice;
 
   return (
@@ -131,6 +130,7 @@ export default function Demo() {
               <div className="idea-cards">
                 {ideas.map((idea, i) => {
                   const isBest = idea[2] === Math.max(...ideas.map((x) => x[2]));
+                  const [ideaPrice, ideaMrr] = computeIdeaPricing(answers.budget, idea[2]);
                   return (
                     <div key={i} className={`idea-card${chosenIdx === i ? " chosen" : ""}${isBest ? " idea-card--best" : ""}`}>
                       {isBest && <span className="idea-best-badge">Meilleur score</span>}
@@ -145,11 +145,11 @@ export default function Demo() {
                       </div>
                       <div className="idea-meta">
                         <span>Prix suggéré</span>
-                        <b>{price}/mois</b>
+                        <b>{ideaPrice}/mois</b>
                       </div>
                       <div className="idea-meta">
                         <span>MRR potentiel</span>
-                        <b>{mrr}</b>
+                        <b>{ideaMrr}</b>
                       </div>
                       <button onClick={() => setChosenIdx(i)}>{copy.cta}</button>
                     </div>

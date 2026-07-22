@@ -16,6 +16,7 @@ export default function Footer({ navigate }) {
               <a onClick={() => navigate("#parcours")}>Parcours</a>
               <a onClick={() => navigate("#outils")}>Outils</a>
               <a onClick={() => navigate("#marketplace")}>Marketplace</a>
+              <a onClick={() => navigate("#/vendre")}>Vendre mon SaaS</a>
               <a onClick={() => navigate("#tarifs")}>Tarifs</a>
             </div>
             <div className="footer-col">

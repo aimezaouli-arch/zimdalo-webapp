@@ -38,6 +38,7 @@ const NAMED_PAGES = new Set([
   "contact",
   "inscription",
   "connexion",
+  "vendre",
 ]);
 
 function parseHash(hash) {

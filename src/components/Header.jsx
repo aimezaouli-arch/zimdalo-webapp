@@ -10,6 +10,7 @@ export default function Header({ navigate }) {
           <a onClick={() => navigate("#parcours")}>Parcours</a>
           <a onClick={() => navigate("#outils")}>Outils</a>
           <a onClick={() => navigate("#marketplace")}>Marketplace</a>
+          <a onClick={() => navigate("#/vendre")}>Vendre</a>
           <a onClick={() => navigate("#/blog")}>Blog</a>
           <a onClick={() => navigate("#tarifs")}>Tarifs</a>
           <a onClick={() => navigate("#/connexion")}>Connexion</a>
