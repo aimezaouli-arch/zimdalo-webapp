@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Prestations3D from "../components/Prestations3D.jsx";
+import PrestationsCarousel from "../components/PrestationsCarousel.jsx";
 import Demo from "../components/Demo.jsx";
 import CardGrid from "../components/CardGrid.jsx";
 import ToolCard from "../components/ToolCard.jsx";
@@ -85,7 +85,7 @@ export default function Home({ navigate }) {
       </section>
 
       {/* 3D PRESTATIONS */}
-      <section className="prestations3d" id="prestations">
+      <section className="prestations-section" id="prestations">
         <div className="container">
           <div className="section-head">
             <span className="eyebrow">Nos prestations</span>
@@ -95,7 +95,7 @@ export default function Home({ navigate }) {
               autour du même accompagnement.
             </p>
           </div>
-          <Prestations3D />
+          <PrestationsCarousel />
         </div>
       </section>
 

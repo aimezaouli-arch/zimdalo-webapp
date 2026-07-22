@@ -11,7 +11,7 @@ Pensée pour les entrepreneurs francophones d'Afrique et de la diaspora.
 ## Stack
 
 - **React 18** + **Vite 5** — build rapide, HMR en développement.
-- **Three.js** (chargé en lazy-import) pour l'animation 3D des prestations.
+- Carrousel d'informations en CSS/React pur (icônes vectorielles maison) pour la section "Nos prestations" — aucune dépendance externe.
 - CSS classique avec tokens (`:root` custom properties) — pas de Tailwind, pas de framework CSS.
 - Routage interne léger basé sur `window.location.hash` (`src/useHashRoute.js`), sans dépendance à `react-router`.
 - Contenu centralisé dans `src/data/content.js`.
@@ -32,9 +32,9 @@ src/
     Footer.jsx
     CardGrid.jsx              grille de cartes générique (outils, fonctionnalités)
     Demo.jsx                   parcours interactif en 4 questions
-    Prestations3D.jsx          scène Three.js (import dynamique, cleanup complet)
+    PrestationsCarousel.jsx    carrousel d'informations défilant (prestations)
   pages/
-    Home.jsx                   landing complète (hero, pour qui, 3D, démo, parcours, outils, marketplace, tarifs)
+    Home.jsx                   landing complète (hero, pour qui, carrousel prestations, démo, parcours, outils, marketplace, tarifs)
     Blog.jsx / Article.jsx
     Formations.jsx
     Succes.jsx
@@ -87,7 +87,7 @@ npm run build
 npm run preview   # pour tester le build localement
 ```
 
-Le build génère `dist/`. Le chunk Three.js est séparé du bundle principal (chargé uniquement quand la section 3D est affichée).
+Le build génère `dist/`. Aucune dépendance lourde (plus de Three.js) : le bundle reste léger.
 
 ## Déploiement sur Hostinger
 
