@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ToolShell from "../../components/ToolShell.jsx";
 import { FieldGroup, PillLightRow } from "../../components/ToolFormBits.jsx";
 import { toolsConfig } from "../../data/tools.js";
+import { consumeDraftProject } from "../../lib/draftProject.js";
 
 const tool = toolsConfig.find((t) => t.slug === "cahier-de-charge");
 
@@ -10,6 +11,15 @@ export default function CahierDeCharge({ navigate }) {
   const [description, setDescription] = useState("");
   const [profil, setProfil] = useState("novice");
   const [document, setDocument] = useState(null);
+  const [prefilled, setPrefilled] = useState(false);
+
+  useEffect(() => {
+    const draft = consumeDraftProject();
+    if (draft) {
+      setDescription(draft);
+      setPrefilled(true);
+    }
+  }, []);
 
   const profilLabel = {
     novice: "un nouveau projet",
@@ -67,6 +77,22 @@ ${description || "Décris ici l'objectif principal du projet."}
         Remplis les champs ci-dessous pour générer un cahier de charge de base, téléchargeable
         immédiatement.
       </p>
+
+      {prefilled && (
+        <div
+          style={{
+            background: "#EFFAF4",
+            border: "1px solid #BEEBD3",
+            borderRadius: 6,
+            padding: "10px 14px",
+            fontSize: 12.5,
+            color: "#3A6B52",
+            marginBottom: 18,
+          }}
+        >
+          Ton idée a été reprise depuis la page d'accueil — modifie-la librement ci-dessous.
+        </div>
+      )}
 
       <div className="form-field">
         <label htmlFor="cc-name">Nom du projet</label>

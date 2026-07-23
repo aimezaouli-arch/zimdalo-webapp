@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ideaBank, profilCopy, computeIdeaPricing } from "../data/content.js";
 
 const TOTAL_STEPS = 4;
 
-export default function Demo() {
+export default function Demo({ initialProfil }) {
   const [step, setStep] = useState(1);
   const [answers, setAnswers] = useState({ profil: null, client: null, budget: null, pays: null });
   const [chosenIdx, setChosenIdx] = useState(null);
+
+  useEffect(() => {
+    if (initialProfil && ["novice", "existante", "extension"].includes(initialProfil)) {
+      setAnswers((a) => ({ ...a, profil: initialProfil }));
+      setStep(2);
+      setChosenIdx(null);
+    }
+  }, [initialProfil]);
 
   function select(group, value) {
     const next = { ...answers, [group]: value };

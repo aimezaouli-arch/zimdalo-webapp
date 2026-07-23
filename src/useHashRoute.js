@@ -68,7 +68,11 @@ function parseHash(hash) {
     return { page: key, id: null, plan: null, anchor: null };
   }
   if (hash.length > 1) {
-    return { page: "home", id: null, plan: null, anchor: hash };
+    if (hash.indexOf("#demo-") === 0) {
+      const preset = hash.replace("#demo-", "");
+      return { page: "home", id: null, plan: null, anchor: "#demo", demoPreset: preset };
+    }
+    return { page: "home", id: null, plan: null, anchor: hash, demoPreset: null };
   }
-  return { page: "home", id: null, plan: null, anchor: null };
+  return { page: "home", id: null, plan: null, anchor: null, demoPreset: null };
 }

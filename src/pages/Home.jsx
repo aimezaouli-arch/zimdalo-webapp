@@ -1,4 +1,5 @@
 import PrestationsCarousel from "../components/PrestationsCarousel.jsx";
+import FreeProjectField from "../components/FreeProjectField.jsx";
 import Demo from "../components/Demo.jsx";
 import CardGrid from "../components/CardGrid.jsx";
 import ToolCard from "../components/ToolCard.jsx";
@@ -7,7 +8,7 @@ import PricingSection from "../components/PricingSection.jsx";
 import { toolsConfig } from "../data/tools.js";
 import { features, steps } from "../data/content.js";
 
-export default function Home({ navigate }) {
+export default function Home({ navigate, demoPreset }) {
   return (
     <>
       {/* HERO */}
@@ -50,35 +51,52 @@ export default function Home({ navigate }) {
             <h2>Trois profils, un seul parcours</h2>
             <p>
               Que tu partes de zéro ou que tu diriges déjà une activité, Zimdalo adapte le parcours à
-              ta situation de départ.
+              ta situation de départ. Clique sur ton profil pour démarrer directement.
             </p>
           </div>
           <div className="tools-grid">
-            <div className="tool-card">
+            <div className="tool-card tool-card--clickable" onClick={() => navigate("#demo-novice")}>
               <div className="tool-icon">N</div>
               <h4>Nouveau projet</h4>
               <p>
                 Tu pars d'une idée ou d'une envie d'entreprendre, sans connaissance technique ou
                 business particulière. Zimdalo te guide de A à Z.
               </p>
+              <div className="tool-card-actions">
+                <button className="tool-cta-primary" onClick={() => navigate("#demo-novice")}>
+                  Démarrer
+                </button>
+              </div>
             </div>
-            <div className="tool-card">
+            <div className="tool-card tool-card--clickable" onClick={() => navigate("#demo-existante")}>
               <div className="tool-icon">E</div>
               <h4>Entreprise déjà existante</h4>
               <p>
                 Ton entreprise a une existence physique (commerce, société, service) et tu veux te
                 digitaliser : SaaS interne, outil client, plateforme de vente.
               </p>
+              <div className="tool-card-actions">
+                <button className="tool-cta-primary" onClick={() => navigate("#demo-existante")}>
+                  Démarrer
+                </button>
+              </div>
             </div>
-            <div className="tool-card">
+            <div className="tool-card tool-card--clickable" onClick={() => navigate("#demo-extension")}>
               <div className="tool-icon">X</div>
               <h4>Extension d'activité</h4>
               <p>
                 Tu es déjà entrepreneur et tu veux étendre ton activité vers un nouveau marché, un
                 nouveau pays, ou un nouveau produit digital.
               </p>
+              <div className="tool-card-actions">
+                <button className="tool-cta-primary" onClick={() => navigate("#demo-extension")}>
+                  Démarrer
+                </button>
+              </div>
             </div>
           </div>
+
+          <FreeProjectField navigate={navigate} />
         </div>
       </section>
 
@@ -98,7 +116,7 @@ export default function Home({ navigate }) {
       </section>
 
       {/* DEMO */}
-      <Demo />
+      <Demo initialProfil={demoPreset} />
 
       {/* PARCOURS */}
       <section className="light" id="parcours">

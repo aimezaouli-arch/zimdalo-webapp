@@ -43,7 +43,7 @@ export default function App() {
       return () => cancelAnimationFrame(id);
     }
     window.scrollTo(0, 0);
-  }, [route.page, route.id, route.plan, route.anchor]);
+  }, [route.page, route.id, route.plan, route.anchor, route.demoPreset]);
 
   let content;
   if (route.page === "article") {
@@ -56,6 +56,8 @@ export default function App() {
     content = <Inscription plan={route.plan} navigate={navigate} />;
   } else if (route.page === "contact") {
     content = <Contact listingId={route.id} navigate={navigate} />;
+  } else if (route.page === "home") {
+    content = <Home navigate={navigate} demoPreset={route.demoPreset} />;
   } else {
     const Page = SIMPLE_PAGES[route.page] || Home;
     content = <Page navigate={navigate} />;
