@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { ideaBank, profilCopy, computeIdeaPricing } from "../data/content.js";
+import { toolsConfig } from "../data/tools.js";
 
 const TOTAL_STEPS = 4;
 
-export default function Demo({ initialProfil }) {
+export default function Demo({ initialProfil, navigate }) {
   const [step, setStep] = useState(1);
   const [answers, setAnswers] = useState({ profil: null, client: null, budget: null, pays: null });
   const [chosenIdx, setChosenIdx] = useState(null);
@@ -166,15 +167,25 @@ export default function Demo({ initialProfil }) {
               </div>
               {chosenIdx !== null && (
                 <div className="followup show">
-                  <span>{copy.followupLabel}</span> <b>{ideas[chosenIdx][0]}</b> — ton parcours en 10
-                  étapes est prêt.
-                  <div className="mini-steps">
-                    <span>1. Roadmap</span>
-                    <span>2. Cahier de charge</span>
-                    <span>3. Pricing</span>
-                    <span>4. Plan marketing</span>
-                    <span>5. Estimation revenus</span>
-                    <span>…</span>
+                  <p className="followup-headline">
+                    <span>{copy.followupLabel}</span> <b>{ideas[chosenIdx][0]}</b> — ton parcours en 10
+                    étapes est prêt.
+                  </p>
+                  <div className="journey-list">
+                    {toolsConfig.map((tool) => (
+                      <button
+                        key={tool.slug}
+                        className="journey-item"
+                        onClick={() => navigate(`#/outils/${tool.slug}`)}
+                      >
+                        <span className="journey-num mono">{tool.num}</span>
+                        <span className="journey-body">
+                          <span className="journey-name">{tool.name}</span>
+                          <span className="journey-desc">{tool.short}</span>
+                        </span>
+                        <span className="journey-arrow">→</span>
+                      </button>
+                    ))}
                   </div>
                 </div>
               )}

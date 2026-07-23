@@ -116,7 +116,7 @@ export default function Home({ navigate, demoPreset }) {
       </section>
 
       {/* DEMO */}
-      <Demo initialProfil={demoPreset} />
+      <Demo initialProfil={demoPreset} navigate={navigate} />
 
       {/* PARCOURS */}
       <section className="light" id="parcours">
