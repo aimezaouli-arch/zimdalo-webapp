@@ -109,9 +109,9 @@ export default function Home({ navigate }) {
             </span>
             <h2>Six étapes, quel que soit ton point de départ</h2>
             <p>
-              Un parcours linéaire pensé pour ne jamais perdre l'utilisateur, qu'il lance un projet,
-              digitalise une entreprise existante ou étende une activité — deux à trois questions par
-              page, un bouton principal.
+              Un chemin clair, pensé pour ne jamais te perdre — que tu lances un projet, digitalises
+              une entreprise existante ou étendes une activité déjà en place. Deux à trois choix par
+              étape, jamais plus.
             </p>
           </div>
           <div className="steps-list">

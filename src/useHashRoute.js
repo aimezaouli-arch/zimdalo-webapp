@@ -51,6 +51,9 @@ function parseHash(hash) {
   if (hash.indexOf("#/outils/") === 0) {
     return { page: "tool", id: hash.replace("#/outils/", ""), plan: null, anchor: null };
   }
+  if (hash.indexOf("#/espace/") === 0) {
+    return { page: "espace-role", id: hash.replace("#/espace/", ""), plan: null, anchor: null };
+  }
   if (hash.indexOf("#/inscription/") === 0) {
     return { page: "inscription", id: null, plan: hash.replace("#/inscription/", ""), anchor: null };
   }

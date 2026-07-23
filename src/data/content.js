@@ -215,12 +215,12 @@ export function computeIdeaPricing(budget, score) {
 }
 
 export const steps = [
-  ["1", "Onboarding", "Quatre questions : situation de départ (nouveau projet, entreprise existante, extension), type de client visé, budget disponible, pays ou zone."],
-  ["2", "Génération d'idées", "Trois idées ou pistes adaptées, avec marché, prix, MRR estimé et score de viabilité."],
-  ["3", "Choix d'une piste", "L'utilisateur sélectionne la piste sur laquelle il souhaite avancer."],
-  ["4", "Parcours complet généré", "Roadmap, cahier de charge, plan marketing, pricing, estimation de revenus et de prix de revente."],
-  ["5", "Accès étape par étape", "Une page par étape, deux à trois questions maximum, un bouton d'action principal."],
-  ["6", "Feedback simple", "Une question de satisfaction, trois options, un champ optionnel d'une ligne."],
+  ["1", "Ton point de départ", "Trois questions simples : ta situation actuelle (nouveau projet, entreprise existante, extension), le client que tu veux servir, ton budget et ta zone."],
+  ["2", "Des pistes concrètes", "Trois pistes adaptées à ta situation, chacune avec son marché, son prix, son potentiel de revenu et un score de viabilité."],
+  ["3", "Ton choix", "Tu sélectionnes la piste qui te correspond le mieux — rien n'est figé, tu peux revenir en arrière à tout moment."],
+  ["4", "Un plan complet", "Planning, budget prévisionnel, stratégie de prix, plan pour trouver tes premiers clients, et estimation de ce que ton activité pourrait valoir plus tard."],
+  ["5", "Un pas à la fois", "Chaque étape tient sur une seule page, avec deux ou trois choix à faire et une action claire à mener."],
+  ["6", "Ton avis compte", "Une question simple pour savoir si l'étape t'a été utile, et un espace libre si tu veux en dire plus."],
 ];
 
 export const articles = [
