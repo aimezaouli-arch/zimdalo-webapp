@@ -54,8 +54,47 @@ header{
 @media(max-width:820px){ .nav-mobile-hide{display:none;} }
 
 .hero{background:var(--ink); color:var(--paper); position:relative; padding:72px 0 40px; overflow:hidden;}
-.hero::before{
+
+.hero-slider{position:absolute; inset:0; z-index:0;}
+.hero-slide{
+  position:absolute; inset:0; opacity:0; transition:opacity 1.6s ease;
+  background-size:cover; background-position:center;
+}
+.hero-slide.is-active{opacity:1;}
+
+.hero-slide--a{
+  background:
+    radial-gradient(ellipse 700px 500px at 78% 15%, rgba(242,167,59,0.16), transparent 65%),
+    radial-gradient(ellipse 600px 500px at 15% 85%, rgba(76,201,232,0.12), transparent 65%),
+    linear-gradient(135deg, #0F1B3D 0%, #16233F 55%, #1B2A4A 100%);
+}
+.hero-slide--a::after{
   content:""; position:absolute; inset:0;
+  background-image:radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size:22px 22px;
+  mask-image:radial-gradient(ellipse at 78% 15%, black 0%, transparent 60%);
+}
+
+.hero-slide--b{
+  background:
+    radial-gradient(ellipse 650px 550px at 20% 20%, rgba(76,201,232,0.18), transparent 65%),
+    radial-gradient(ellipse 500px 450px at 85% 80%, rgba(62,207,142,0.10), transparent 65%),
+    linear-gradient(135deg, #152A5C 0%, #0F1B3D 60%, #16233F 100%);
+}
+.hero-slide--b::after{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(115deg, transparent 48%, rgba(76,201,232,0.06) 49%, rgba(76,201,232,0.06) 51%, transparent 52%);
+  background-size:64px 64px;
+}
+
+/* Pour passer à de vraies photos une fois disponibles (voir HeroBackgroundSlider.jsx) :
+.hero-slide--photo-a{ background-image:linear-gradient(rgba(15,27,61,0.72), rgba(15,27,61,0.72)), url('/hero/slide-1.jpg'); }
+.hero-slide--photo-b{ background-image:linear-gradient(rgba(15,27,61,0.72), rgba(15,27,61,0.72)), url('/hero/slide-2.jpg'); }
+*/
+
+.hero::before{
+  content:""; position:absolute; inset:0; z-index:1;
   background-image:
     linear-gradient(rgba(76,201,232,0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(76,201,232,0.06) 1px, transparent 1px);

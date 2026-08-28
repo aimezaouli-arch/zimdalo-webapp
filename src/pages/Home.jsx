@@ -1,4 +1,5 @@
 import PrestationsCarousel from "../components/PrestationsCarousel.jsx";
+import HeroBackgroundSlider from "../components/HeroBackgroundSlider.jsx";
 import BeforeAfter from "../components/BeforeAfter.jsx";
 import FreeProjectField from "../components/FreeProjectField.jsx";
 import Demo from "../components/Demo.jsx";
@@ -14,6 +15,7 @@ export default function Home({ navigate, demoPreset }) {
     <>
       {/* HERO */}
       <section className="hero">
+        <HeroBackgroundSlider />
         <div className="container hero-inner">
           <span className="eyebrow">Guide · Outils · Marketplace</span>
           <h1>
