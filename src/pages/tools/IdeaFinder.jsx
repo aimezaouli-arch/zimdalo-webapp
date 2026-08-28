@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ToolShell from "../../components/ToolShell.jsx";
 import { FieldGroup, PillLightRow } from "../../components/ToolFormBits.jsx";
 import { toolsConfig } from "../../data/tools.js";
@@ -14,6 +14,9 @@ export default function IdeaFinder({ navigate }) {
   function handleLaunch() {
     setIdeas(ideaBank[client][zone]);
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { handleLaunch(); }, []);
 
   return (
     <ToolShell tool={tool} navigate={navigate}>

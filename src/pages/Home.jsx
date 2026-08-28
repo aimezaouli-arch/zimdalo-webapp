@@ -1,4 +1,5 @@
 import PrestationsCarousel from "../components/PrestationsCarousel.jsx";
+import BeforeAfter from "../components/BeforeAfter.jsx";
 import FreeProjectField from "../components/FreeProjectField.jsx";
 import Demo from "../components/Demo.jsx";
 import CardGrid from "../components/CardGrid.jsx";
@@ -40,6 +41,9 @@ export default function Home({ navigate, demoPreset }) {
           </div>
         </div>
       </section>
+
+      {/* AVANT / APRÈS */}
+      <BeforeAfter navigate={navigate} />
 
       {/* POUR QUI */}
       <section id="public" style={{ background: "#FBFCFD" }}>

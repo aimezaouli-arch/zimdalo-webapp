@@ -3,63 +3,24 @@ import ToolShell from "../../components/ToolShell.jsx";
 import { FieldGroup, PillLightRow } from "../../components/ToolFormBits.jsx";
 import { toolsConfig } from "../../data/tools.js";
 import { consumeDraftProject } from "../../lib/draftProject.js";
+import { buildCahierDeChargeText } from "../../data/generators.js";
 
 const tool = toolsConfig.find((t) => t.slug === "cahier-de-charge");
 
 export default function CahierDeCharge({ navigate }) {
+  const [draftValue] = useState(() => consumeDraftProject());
   const [projectName, setProjectName] = useState("");
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState(() => draftValue || "");
   const [profil, setProfil] = useState("novice");
   const [document, setDocument] = useState(null);
-  const [prefilled, setPrefilled] = useState(false);
-
-  useEffect(() => {
-    const draft = consumeDraftProject();
-    if (draft) {
-      setDescription(draft);
-      setPrefilled(true);
-    }
-  }, []);
-
-  const profilLabel = {
-    novice: "un nouveau projet",
-    existante: "la digitalisation d'une entreprise existante",
-    extension: "l'extension d'une activité existante",
-  };
-
-  function buildDocument() {
-    const date = new Date().toLocaleDateString("fr-FR");
-    return `CAHIER DE CHARGE
-${projectName || "Nom du projet à définir"}
-Généré via Zimdalo — ${date}
-
-1. CONTEXTE
-Ce projet concerne ${profilLabel[profil]}.
-
-2. DESCRIPTION
-${description || "Décris ici l'objectif principal du projet."}
-
-3. OBJECTIFS
-- Définir clairement le problème résolu et le public visé.
-- Lister les fonctionnalités essentielles avant les fonctionnalités secondaires.
-- Prévoir un budget et un délai réalistes pour la première version.
-
-4. FONCTIONNALITÉS PRINCIPALES
-- [À compléter selon les priorités du projet]
-
-5. CONTRAINTES TECHNIQUES
-- [Hébergement, budget, délais, conformité locale le cas échéant]
-
-6. PROCHAINES ÉTAPES
-- Valider ce document avec les parties prenantes.
-- Prioriser les fonctionnalités pour une première version (MVP).
-- Estimer le budget et le planning de développement.
-`;
-  }
+  const [prefilled] = useState(() => Boolean(draftValue));
 
   function handleGenerate() {
-    setDocument(buildDocument());
+    setDocument(buildCahierDeChargeText({ projectName, description, profil }));
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { handleGenerate(); }, []);
 
   function handleDownload() {
     const blob = new Blob([document], { type: "text/plain;charset=utf-8" });

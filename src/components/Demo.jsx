@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ideaBank, profilCopy, computeIdeaPricing } from "../data/content.js";
-import { toolsConfig } from "../data/tools.js";
+import FullPlanReveal from "./FullPlanReveal.jsx";
 
 const TOTAL_STEPS = 4;
 
@@ -168,25 +168,21 @@ export default function Demo({ initialProfil, navigate }) {
               {chosenIdx !== null && (
                 <div className="followup show">
                   <p className="followup-headline">
-                    <span>{copy.followupLabel}</span> <b>{ideas[chosenIdx][0]}</b> — ton parcours en 10
-                    étapes est prêt.
+                    <span>{copy.followupLabel}</span> <b>{ideas[chosenIdx][0]}</b> — voici ton plan
+                    complet, généré immédiatement.
                   </p>
-                  <div className="journey-list">
-                    {toolsConfig.map((tool) => (
-                      <button
-                        key={tool.slug}
-                        className="journey-item"
-                        onClick={() => navigate(`#/outils/${tool.slug}`)}
-                      >
-                        <span className="journey-num mono">{tool.num}</span>
-                        <span className="journey-body">
-                          <span className="journey-name">{tool.name}</span>
-                          <span className="journey-desc">{tool.short}</span>
-                        </span>
-                        <span className="journey-arrow">→</span>
-                      </button>
-                    ))}
-                  </div>
+                  <FullPlanReveal
+                    ideaName={ideas[chosenIdx][0]}
+                    ideaDescription={ideas[chosenIdx][1]}
+                    ideaScore={ideas[chosenIdx][2]}
+                    profil={answers.profil}
+                    client={answers.client}
+                    budget={answers.budget}
+                    pays={answers.pays}
+                    price={computeIdeaPricing(answers.budget, ideas[chosenIdx][2])[0]}
+                    mrr={computeIdeaPricing(answers.budget, ideas[chosenIdx][2])[1]}
+                    navigate={navigate}
+                  />
                 </div>
               )}
             </div>

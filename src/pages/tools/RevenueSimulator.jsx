@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ToolShell from "../../components/ToolShell.jsx";
 import { FieldGroup } from "../../components/ToolFormBits.jsx";
 import { toolsConfig } from "../../data/tools.js";
+import { simulateRevenue } from "../../data/generators.js";
 
 const tool = toolsConfig.find((t) => t.slug === "revenue-simulator");
 
@@ -12,14 +13,11 @@ export default function RevenueSimulator({ navigate }) {
   const [projection, setProjection] = useState(null);
 
   function handleSimulate() {
-    const points = [];
-    let mrr = startMrr;
-    for (let m = 1; m <= months; m++) {
-      mrr = mrr * (1 + growthRate / 100);
-      points.push({ month: m, mrr: Math.round(mrr) });
-    }
-    setProjection(points);
+    setProjection(simulateRevenue({ startMrr, growthRate, months }));
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { handleSimulate(); }, []);
 
   const maxMrr = projection ? Math.max(...projection.map((p) => p.mrr)) : 0;
 

@@ -1,35 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ToolShell from "../../components/ToolShell.jsx";
 import { FieldGroup, PillLightRow } from "../../components/ToolFormBits.jsx";
 import { toolsConfig } from "../../data/tools.js";
+import { buildMarketingPlan } from "../../data/generators.js";
 
 const tool = toolsConfig.find((t) => t.slug === "marketing-plan");
-
-const PLANS_BY_BUDGET = {
-  petit: {
-    30: "Poster 3 fois par semaine sur les réseaux sociaux locaux, contacter 20 clients potentiels directement.",
-    60: "Recueillir les 5 premiers retours clients, ajuster le message selon leurs mots exacts.",
-    90: "Mettre en place un système de recommandation simple (parrainage) entre utilisateurs.",
-  },
-  moyen: {
-    30: "Lancer une page de présentation avec pré-réservation, campagne ciblée sur les réseaux sociaux.",
-    60: "Lancer un programme de parrainage et solliciter les premiers témoignages clients.",
-    90: "Tester un canal payant à petite échelle (publicité ciblée) et mesurer le coût d'acquisition.",
-  },
-  grand: {
-    30: "Campagne de lancement multi-canal, partenariats avec des acteurs relais du secteur.",
-    60: "Optimiser les canaux les plus performants, lancer du contenu régulier (blog, réseaux).",
-    90: "Structurer une équipe commerciale légère ou des ambassadeurs rémunérés à la performance.",
-  },
-};
 
 export default function MarketingPlan({ navigate }) {
   const [budget, setBudget] = useState("moyen");
   const [plan, setPlan] = useState(null);
 
   function handleGenerate() {
-    setPlan(PLANS_BY_BUDGET[budget]);
+    setPlan(buildMarketingPlan(budget));
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { handleGenerate(); }, []);
 
   return (
     <ToolShell tool={tool} navigate={navigate}>

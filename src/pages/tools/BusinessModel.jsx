@@ -1,27 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ToolShell from "../../components/ToolShell.jsx";
 import { FieldGroup, PillLightRow } from "../../components/ToolFormBits.jsx";
 import { toolsConfig } from "../../data/tools.js";
+import { buildBusinessModel } from "../../data/generators.js";
 
 const tool = toolsConfig.find((t) => t.slug === "business-model");
-
-const MODELS = {
-  B2B: {
-    pricing: "Abonnement mensuel par siège ou par volume d'usage",
-    segments: "PME et indépendants ayant déjà un budget alloué au problème résolu",
-    channels: "Prospection directe, partenariats sectoriels, bouche-à-oreille B2B",
-  },
-  B2C: {
-    pricing: "Freemium avec palier payant, ou abonnement mensuel simple",
-    segments: "Particuliers urbains, premiers adoptants sensibles au gain de temps",
-    channels: "Réseaux sociaux, référencement local, recommandation entre utilisateurs",
-  },
-  B2G: {
-    pricing: "Licence annuelle ou contrat de prestation sur devis",
-    segments: "Administrations et collectivités locales",
-    channels: "Appels d'offres, réseau institutionnel, démonstrations directes",
-  },
-};
 
 export default function BusinessModel({ navigate }) {
   const [client, setClient] = useState("B2C");
@@ -29,8 +12,11 @@ export default function BusinessModel({ navigate }) {
   const [result, setResult] = useState(null);
 
   function handleGenerate() {
-    setResult(MODELS[client]);
+    setResult(buildBusinessModel(client));
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { handleGenerate(); }, []);
 
   return (
     <ToolShell tool={tool} navigate={navigate}>
