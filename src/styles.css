@@ -57,35 +57,34 @@ header{
 
 .hero-slider{position:absolute; inset:0; z-index:0;}
 .hero-slide{
-  position:absolute; inset:0; opacity:0; transition:opacity 1.6s ease;
+  position:absolute; inset:0; opacity:0; transition:opacity 1.8s ease;
   background-size:cover; background-position:center;
 }
 .hero-slide.is-active{opacity:1;}
 
 .hero-slide--a{
   background:
-    radial-gradient(ellipse 700px 500px at 78% 15%, rgba(242,167,59,0.16), transparent 65%),
-    radial-gradient(ellipse 600px 500px at 15% 85%, rgba(76,201,232,0.12), transparent 65%),
-    linear-gradient(135deg, #0F1B3D 0%, #16233F 55%, #1B2A4A 100%);
+    radial-gradient(circle 520px at 82% 12%, rgba(242,167,59,0.55), transparent 60%),
+    radial-gradient(circle 460px at 10% 90%, rgba(76,201,232,0.35), transparent 62%),
+    linear-gradient(150deg, #1B2A4A 0%, #0F1B3D 45%, #2A1F3D 100%);
 }
 .hero-slide--a::after{
   content:""; position:absolute; inset:0;
-  background-image:radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size:22px 22px;
-  mask-image:radial-gradient(ellipse at 78% 15%, black 0%, transparent 60%);
+  background-image:radial-gradient(rgba(255,255,255,0.16) 2px, transparent 2.5px);
+  background-size:26px 26px;
+  mask-image:radial-gradient(circle 520px at 82% 12%, black 0%, transparent 70%);
 }
 
 .hero-slide--b{
   background:
-    radial-gradient(ellipse 650px 550px at 20% 20%, rgba(76,201,232,0.18), transparent 65%),
-    radial-gradient(ellipse 500px 450px at 85% 80%, rgba(62,207,142,0.10), transparent 65%),
-    linear-gradient(135deg, #152A5C 0%, #0F1B3D 60%, #16233F 100%);
+    radial-gradient(circle 560px at 14% 18%, rgba(76,201,232,0.5), transparent 60%),
+    radial-gradient(circle 440px at 88% 85%, rgba(62,207,142,0.3), transparent 62%),
+    linear-gradient(150deg, #0F1B3D 0%, #152A5C 55%, #0F1B3D 100%);
 }
 .hero-slide--b::after{
   content:""; position:absolute; inset:0;
   background-image:
-    linear-gradient(115deg, transparent 48%, rgba(76,201,232,0.06) 49%, rgba(76,201,232,0.06) 51%, transparent 52%);
-  background-size:64px 64px;
+    repeating-linear-gradient(115deg, transparent 0px, transparent 30px, rgba(76,201,232,0.14) 31px, rgba(76,201,232,0.14) 32px);
 }
 
 /* Pour passer à de vraies photos une fois disponibles (voir HeroBackgroundSlider.jsx) :
